@@ -32,7 +32,7 @@ public class ProductServiceTests {
 		existingId = 1L;
 		nonExistingId = 1000L;
 
-		Mockito.doNothing().when(repository).deleteById(existingId);
+		Mockito.doReturn(true).when(repository).existsById(existingId);
 		Mockito.doThrow(EmptyResultDataAccessException.class).when(repository).deleteById(nonExistingId);
 		
 	}
