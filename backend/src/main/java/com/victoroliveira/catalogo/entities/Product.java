@@ -117,6 +117,6 @@ public class Product {
 			return false;
 		Product other = (Product) obj;
 		return Objects.equals(id, other.id);
-	}	
+	}
 	
 }
