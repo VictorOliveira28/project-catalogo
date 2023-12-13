@@ -1,0 +1,119 @@
+[33mcommit 2e7b65bee2852000cb99380e2a56c456b352c9d8[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Victor Oliveira <victor.oliveira20@icloud.com>
+Date:   Wed Dec 13 16:22:48 2023 -0300
+
+    ProductControlerTests - findAllShouldReturnPage() implemented
+
+[33mcommit 348712d99ad5edd5cbe357a9a52273234ba3e477[m
+Author: Victor Oliveira <victor.oliveira20@icloud.com>
+Date:   Mon Dec 11 17:38:04 2023 -0300
+
+    Factory - CreateCategory(), Testes -> updateWhenExistingId, updateThrowWhenNonExistingId
+
+[33mcommit fc3668642c9cb41ee13c6ea21687bedb43e74b17[m
+Author: Victor Oliveira <victor.oliveira20@icloud.com>
+Date:   Mon Dec 11 16:17:32 2023 -0300
+
+    Testes adicionados: findById, Pageable
+
+[33mcommit 1982de921c72e6d4e622369e6fcfad5b087385b3[m
+Author: Victor Oliveira <victor.oliveira20@icloud.com>
+Date:   Sun Dec 10 10:57:58 2023 -0300
+
+    deleteShouldThrowException when id non exists, deleteShouldThrowDatabaseException when dependent id
+
+[33mcommit 55d04395a7a208f685a9f8beecba364e64e3c161[m
+Author: Victor Oliveira <victor.oliveira20@icloud.com>
+Date:   Fri Dec 8 17:43:16 2023 -0300
+
+    Error ProductServiceTests solved
+
+[33mcommit 29300e51d4841efc1f92cedc1747cb21b198e205[m
+Author: Victor Oliveira <victor.oliveira20@icloud.com>
+Date:   Fri Dec 8 16:46:22 2023 -0300
+
+    Repository Test, ProductService added
+
+[33mcommit 4e00c04d382307d0ab27f3b3d2666a07dab413d4[m
+Author: Victor Oliveira <victor.oliveira20@icloud.com>
+Date:   Thu Nov 16 18:01:51 2023 -0300
+
+    Refactor Pageable
+
+[33mcommit 7ae5a46458f8a16ffdf97e5f61bfef7c10b18a78[m
+Author: Victor Oliveira <victor.oliveira20@icloud.com>
+Date:   Thu Nov 16 17:53:23 2023 -0300
+
+    Product insert, update, delete
+
+[33mcommit dfeb1ba0d1ddb543c91c1baa4a12ad3ff85b20d5[m
+Author: Victor Oliveira <victor.oliveira20@icloud.com>
+Date:   Thu Nov 16 16:28:35 2023 -0300
+
+    Product repository, service, resource, GET ok
+
+[33mcommit bf71d0de331639d08df6b219c5250c17afb34669[m
+Author: Victor Oliveira <victor.oliveira20@icloud.com>
+Date:   Thu Nov 16 16:02:07 2023 -0300
+
+    Product entity, SQL script
+
+[33mcommit aef9633da04d3df864b2ad179ee41133507a5578[m
+Author: Victor Oliveira <victor.oliveira20@icloud.com>
+Date:   Thu Nov 16 14:49:12 2023 -0300
+
+    Pagination
+
+[33mcommit 0dd01239a5aa4d6b733f32fd6b3bec3b8848dbae[m
+Author: Victor Oliveira <victor.oliveira20@icloud.com>
+Date:   Thu Nov 16 13:46:14 2023 -0300
+
+    Auditing data
+
+[33mcommit 1af7acbdd3f3169a27843598cc2e432200ba4143[m
+Author: Victor Oliveira <victor.oliveira20@icloud.com>
+Date:   Mon Nov 13 16:12:05 2023 -0300
+
+    Update category
+
+[33mcommit 71408765ec5f508c3d8430c577dfb9a1b06faa88[m
+Author: Victor Oliveira <victor.oliveira20@icloud.com>
+Date:   Mon Nov 13 15:41:58 2023 -0300
+
+    Post new Category
+
+[33mcommit dbe123bddf90817a000279cbf53f8110ca36d93b[m
+Author: Victor Oliveira <victor.oliveira20@icloud.com>
+Date:   Thu Nov 9 18:34:28 2023 -0300
+
+    Find category by id, exception handler
+
+[33mcommit d6644bf7fd205ce7f537cac607e300f967a2e1d1[m
+Author: Victor Oliveira <victor.oliveira20@icloud.com>
+Date:   Thu Nov 9 17:38:29 2023 -0300
+
+    Implementação do DTO
+
+[33mcommit 934aaef85c6f52045435d93cf9751a216f70f8b3[m
+Author: Victor Oliveira <victor.oliveira20@icloud.com>
+Date:   Thu Nov 9 14:00:44 2023 -0300
+
+    Seed base de dados
+
+[33mcommit a89fa7e8858bb14b12c5689eb9bb93552b693062[m
+Author: Victor Oliveira <victor.oliveira20@icloud.com>
+Date:   Wed Nov 8 18:22:01 2023 -0300
+
+    H2 Database
+
+[33mcommit f66fd547b030239c398474e8654254b61f018a40[m
+Author: Victor Oliveira <victor.oliveira20@icloud.com>
+Date:   Wed Nov 8 16:35:32 2023 -0300
+
+    Category controller
+
+[33mcommit f9f46404799c88a3ebe47133a8308487a142e1dd[m
+Author: Victor Oliveira <victor.oliveira20@icloud.com>
+Date:   Wed Nov 8 14:48:59 2023 -0300
+
+    Create Catalog
