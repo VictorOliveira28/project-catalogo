@@ -1,5 +1,8 @@
 package com.victoroliveira.catalogo.dto;
 
+import com.victoroliveira.catalogo.services.validation.UserInsertValid;
+
+@UserInsertValid
 public class UserInsertDTO extends UserDTO{
 	
 	private String password;
