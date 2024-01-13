@@ -31,13 +31,14 @@ public class UserController {
 	@Autowired
 	private UserService service;	
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping
 	public ResponseEntity<Page<UserDTO>> findAll(Pageable pageable) {					
 		Page<UserDTO> list = service.findAllPaged(pageable);		
 		return ResponseEntity.ok().body(list);
 	}
 	
-	@PreAuthorize("hasAnyRole('ROLE_OPERATOR', 'ROLE_ADMIN')")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<UserDTO> findById(@PathVariable Long id){
 		UserDTO dto = service.findById(id);
