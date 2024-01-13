@@ -18,7 +18,7 @@ public class RoleDTO {
 	
 	public RoleDTO(Role role) {
 		id = role.getId();
-		authority = role.getAutorithy();
+		authority = role.getAuthority();
 	}
 
 	public Long getId() {
