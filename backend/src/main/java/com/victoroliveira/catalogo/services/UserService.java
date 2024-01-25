@@ -30,27 +30,35 @@ import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class UserService implements UserDetailsService {
-	
+
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-	
+
 	@Autowired
 	private UserRepository repository;
-	
+
 	@Autowired
 	private RoleRepository roleRepository;
-	
-		
+
+	@Autowired
+	private AuthService authService;
+
 	@Transactional(readOnly = true)
-	public Page<UserDTO> findAllPaged(Pageable pageable){		
-		Page<User> list = repository.findAll(pageable);		
+	public Page<UserDTO> findAllPaged(Pageable pageable) {
+		Page<User> list = repository.findAll(pageable);
 		return list.map(x -> new UserDTO(x));
 	}
-	
+
+	@Transactional(readOnly = true)
+	public UserDTO findMe() {
+		User entity = authService.autheticated();
+		return new UserDTO(entity);
+	}
+
 	@Transactional(readOnly = true)
 	public UserDTO findById(Long id) {
-		User entity =  repository.findById(id).orElseThrow(
-				() -> new ResourceNotFoundException("Recurso não encontrado"));
+		User entity = repository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Recurso não encontrado"));
 		return new UserDTO(entity);
 	}
 
@@ -58,20 +66,24 @@ public class UserService implements UserDetailsService {
 	public UserDTO insert(UserInsertDTO dto) {
 		User entity = new User();
 		copyDtoToEntity(dto, entity);
+
+		entity.getRoles().clear();
+		Role role = roleRepository.findByAuthority("ROLE_OPERATOR");
+		entity.getRoles().add(role);
+
 		entity.setPassword(passwordEncoder.encode(dto.getPassword()));
 		entity = repository.save(entity);
 		return new UserDTO(entity);
-	}	
+	}
 
 	@Transactional
 	public UserDTO update(Long id, UserUpdateDTO dto) {
 		try {
-		User entity = repository.getReferenceById(id);
-		copyDtoToEntity(dto, entity);
-		entity = repository.save(entity);
-		return new UserDTO(entity);
-		} 
-		catch(EntityNotFoundException e) {
+			User entity = repository.getReferenceById(id);
+			copyDtoToEntity(dto, entity);
+			entity = repository.save(entity);
+			return new UserDTO(entity);
+		} catch (EntityNotFoundException e) {
 			throw new ResourceNotFoundException("Id not found" + id);
 		}
 	}
@@ -82,21 +94,20 @@ public class UserService implements UserDetailsService {
 			throw new ResourceNotFoundException("Id not found " + id);
 		}
 		try {
-	        	repository.deleteById(id);    		
+			repository.deleteById(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new DatabaseException("Referential Integrity Failure");
 		}
-	    	catch (DataIntegrityViolationException e) {
-	        	throw new DatabaseException("Referential Integrity Failure");
-	   	}
 	}
-	
+
 	private void copyDtoToEntity(UserDTO dto, User entity) {
 
 		entity.setFirstName(dto.getFirstName());
 		entity.setLastName(dto.getLastName());
-		entity.setEmail(dto.getEmail());		
-		
+		entity.setEmail(dto.getEmail());
+
 		entity.getRoles().clear();
-		for(RoleDTO roleDTO : dto.getRoles()) {
+		for (RoleDTO roleDTO : dto.getRoles()) {
 			Role role = roleRepository.getReferenceById(roleDTO.getId());
 			entity.getRoles().add(role);
 		}
@@ -105,17 +116,17 @@ public class UserService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		List<UserDetailsProjection> result = repository.searchUserAndRolesByEmail(username);
-		if(result.size() == 0) {
+		if (result.size() == 0) {
 			throw new UsernameNotFoundException("User not found");
 		}
 		User user = new User();
 		user.setEmail(username);
 		user.setPassword(result.get(0).getPassword());
-		for(UserDetailsProjection projection : result) {
+		for (UserDetailsProjection projection : result) {
 			user.addRole(new Role(projection.getRoleId(), projection.getAuthority()));
 		}
-		
+
 		return user;
 	}
-	
+
 }
